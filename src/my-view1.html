@@ -1,0 +1,302 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="../bower_components/vaadin-date-picker/vaadin-date-picker.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+       :host {
+        display: block;
+        padding: 10px;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .left {
+        padding: 10px;
+        width: 50%;
+      }
+
+      .right {
+        padding: 10px;
+        flex-grow: 1;
+      }
+
+      .leftcard {
+        width: 50%;
+      }
+
+      .rightcard {
+        flex-grow: 1;
+      }
+    </style>
+
+    <!-- <paper-input always-float-label label="Floating label"></paper-input>
+<paper-input label="username">
+  <iron-icon icon="mail" slot="prefix"></iron-icon>
+  <div slot="suffix">@email.com</div>
+</paper-input> -->
+
+    <div class="card">
+      <!-- <div class="circle">1</div> -->
+      <h1>Schülerdaten</h1>
+      <div class="container">
+        <div class="left">
+          <paper-input label="Name"></paper-input>
+          <paper-input label="Vorname"></paper-input>
+          <vaadin-combo-box id="vcbGeschlecht" label="Geschlecht" items=[[geschlechtsarray]] selected-item={{selectedgeschlecht}} item-label-path="value">
+            <template>
+              [[item.value]]
+            </template>
+          </vaadin-combo-box>
+          <vaadin-date-picker id="datepicker" label="Geburtsdatum"></vaadin-date-picker>
+          <paper-input label="Geburtsort"></paper-input>
+          <paper-input label="Staatsangehörigkeit"></paper-input>
+        </div>
+        <div class="right">
+          <paper-input label="Religionszugehörigkeit"></paper-input>
+          <paper-input label="Straße, Hausnummer"></paper-input>
+          <paper-input label="Postleitzahl, Ort"></paper-input>
+          <paper-input label="Kreis"></paper-input>
+          <paper-input label="Telefon, Handy"></paper-input>
+          <paper-input label="e-Mail"></paper-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <!-- <div class="circle">1</div> -->
+      <h1>Gesetzlicher Vertreter</h1>
+      <div class="container">
+        <div class="left">
+          <paper-input label="Name"></paper-input>
+          <paper-input label="Vorname"></paper-input>
+        </div>
+        <div class="right">
+          <paper-input label="Straße, Hausnummer"></paper-input>
+          <paper-input label="Postleitzahl, Hausnummer"></paper-input>
+          <paper-input label="Telefon"></paper-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="leftcard">
+        <div class="card">
+          <!-- <div class="circle">1</div> -->
+          <h1>Ausbildungsberuf</h1>
+          <paper-input label="Fachrichtung"></paper-input>
+          Ausbildungszeit:
+          <br>
+          <vaadin-date-picker id="datepicker" label="von"></vaadin-date-picker>
+          <vaadin-date-picker id="datepicker" label="bis"></vaadin-date-picker>
+          <br>Umschüler:
+          <!-- <paper-radio-group id="radioGroup" selected="no"> -->
+          <paper-radio-group id="radioGroup">
+            <paper-radio-button class="radio" name="yes">ja</paper-radio-button>
+            <paper-radio-button class="radio" name="no">nein</paper-radio-button>
+          </paper-radio-group>
+          <br> EQJ (Einstiegsqualifizierungsjahr):
+          <!-- <paper-radio-group id="radioGroup" selected="no"> -->
+          <paper-radio-group id="radioGroup">
+            <paper-radio-button class="radio" name="yes">ja</paper-radio-button>
+            <paper-radio-button class="radio" name="no">nein</paper-radio-button>
+          </paper-radio-group>
+        </div>
+      </div>
+
+      <div class="rightcard">
+        <div class="card">
+          <!-- <div class="circle">1</div> -->
+          <h1>Ausbildungs- bzw. Praktikumsbetrieb</h1>
+          <paper-input label="Name"></paper-input>
+          <paper-input label="Straße, Hausnummer"></paper-input>
+          <paper-input label="Postleitzahl, Ort"></paper-input>
+          <paper-input label="Ansprechpartner"></paper-input>
+          <paper-input label="Telefon"></paper-input>
+          <paper-input label="Fax"></paper-input>
+          <paper-input label="e-Mail"></paper-input>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <!-- <div class="circle">1</div> -->
+      <h1>zuletzt besuchte, allgemeinbildende Schule (z.B. Klasse 5-9/10/11/12)</h1>
+      <vaadin-combo-box id="vcbZuletztBesuchteAllgemeinbildendeSchule" label="zuletzt besuchte, allgemeinbildende Schule" items=[[allgemeineschulearray]]
+        selected-item={{selectedallgemeineschule}} item-label-path="value">
+        <template>
+          [[item.value]]
+        </template>
+      </vaadin-combo-box>
+      <paper-input label="Entlassungsjahr"></paper-input>
+      <paper-input label="aus Klassenstufe"></paper-input>
+      Abschluss:
+      <!-- <paper-radio-group id="radioGroup" selected="no"> -->
+      <paper-radio-group id="radioGroup" selected={{selectedradioabschluss}}>
+        <paper-radio-button class="radio" name="yes">ja</paper-radio-button>
+        <paper-radio-button class="radio" name="no">nein</paper-radio-button>
+      </paper-radio-group>
+      <paper-input id ='txtVersetztNachKlasse' label="versetzt nach Klasse" disabled=[[disabledversetztnachklasse]]></paper-input>
+      <vaadin-combo-box id="vcbArtDesAbschlusses" label="Art des Abschlusses" items=[[artdesabschlussesarray]] selected-item={{selectedartdesabschlusses}}
+        item-label-path="value" disabled=[[disabledartdesabschlusses]]>
+        <template>
+          [[item.value]]
+        </template>
+      </vaadin-combo-box>
+    </div>
+
+    <div class="card">
+      <!-- <div class="circle">1</div> -->
+      <h1>zuletzt besuchte, berufliche Schule (z.B. TG BBZ, KBBZ)</h1>
+      <vaadin-combo-box id="vcbBeruflicheSchule" label="zuletzt besuchte, berufliche Schule" items=[[beruflicheschulearray]] selected-item={{selectedberuflicheschule}}
+        item-label-path="value">
+        <template>
+          [[item.value]]
+        </template>
+      </vaadin-combo-box>
+      <paper-input label="Name der Schule"></paper-input>
+      Schulzeit:
+      <br>
+      <vaadin-date-picker id="datepicker" label="von"></vaadin-date-picker>
+      <vaadin-date-picker id="datepicker" label="bis"></vaadin-date-picker>
+      <br>Abschluss:
+      <!-- <paper-radio-group id="radioGroup" selected="no"> -->
+      <paper-radio-group id="radioGroup" selected={{selectedradioabschlussberuflich}}>
+        <paper-radio-button class="radio" name="yes">ja</paper-radio-button>
+        <paper-radio-button class="radio" name="no">nein</paper-radio-button>
+      </paper-radio-group>
+      <vaadin-combo-box id="vcbArtDesAbschlussesBeruflich" label="Art des Abschlusses" items=[[artdesabschlussesberuflicharray]]
+        selected-item={{selectedartdesabschlussesberuflich}} item-label-path="value" disabled=[[disabledartdesabschlussesberuflich]]>
+        <template>
+          [[item.value]]
+        </template>
+      </vaadin-combo-box>
+    </div>
+
+  </template>
+
+  <script>
+    class MyView1 extends Polymer.Element {
+      static get is() { return 'my-view1'; }
+
+      static get properties() {
+        return {
+          geschlechtsarray: Array,
+          selectedgeschlecht: Object,
+          allgemeineschulearray: Array,
+          selectedallgemeineschule: Object,
+          artdesabschlussesarray: Array,
+          selectedartdesabschlusses: Object,
+          selectedradioabschluss: {
+            type: Object,
+            observer: '_selectedradioabschlussChanged'
+          },
+          beruflicheschulearray: Array,
+          selectedberuflicheschule: Object,
+          artdesabschlussesberuflicharray: Array,
+          selectedartdesabschlussesberuflich: Object,
+          selectedradioabschlussberuflich: {
+            type: Object,
+            observer: '_selectedradioabschlussberuflichChanged'
+          },
+          disabledartdesabschlussesberuflich: {
+            type: Boolean,
+            value: true
+          },
+          disabledartdesabschlusses: {
+            type: Boolean,
+            value: true
+          },
+          disabledversetztnachklasse: {
+            type: Boolean,
+            value: true
+          }
+        };
+      }
+
+      // constructor() {
+      //   super.constructor();
+      // }
+
+      ready() {
+        super.ready();
+        this.geschlechtsarray = [{ value: 'männlich' }, { value: 'weiblich' }]
+        this.allgemeineschulearray = [
+          { value: 'Erweiterte Realschule' },
+          { value: 'Gesamtschule' },
+          { value: 'Gymnasium' },
+          { value: 'Realschule' },
+          { value: 'Hauptschule' },
+          { value: 'Förderschule' },
+          { value: 'Andere' }
+        ];
+        this.artdesabschlussesarray = [
+          { value: 'Hauptschulabschluss' },
+          { value: 'Mittlerer Bildungsabschluss' },
+          { value: 'Abitur' }
+        ];
+        this.beruflicheschulearray = [
+          { value: 'BVJ-Berufsvorbereitungsjahr' },
+          { value: 'BGJ-Berufsgrundbildungsjahr' },
+          { value: 'Gewerbeschule' },
+          { value: 'Handelsschule' },
+          { value: 'Sozialpflegeschule' },
+          { value: 'Fachoberschule' },
+          { value: 'Oberstufengymnasium' },
+          { value: 'Berufsschule' }
+        ];
+        this.artdesabschlussesberuflicharray = [
+          { value: 'Hauptschulabschluss' },
+          { value: 'Mittlerer Bildungsabschluss' },
+          { value: 'Fachoberschule' },
+          { value: 'Abitur' }
+        ];
+      }
+
+      _selectedradioabschlussChanged() {
+        if (this.selectedradioabschluss.localeCompare('yes') == 0) {
+          this.disabledartdesabschlusses = false;
+          this.disabledversetztnachklasse = true;
+          this.$.txtVersetztNachKlasse.value = '';
+        } else if (this.selectedradioabschluss.localeCompare('no') == 0) {
+          this.disabledartdesabschlusses = true;
+          this.disabledversetztnachklasse = false;
+          this.selectedartdesabschlusses = undefined;
+        } else {
+          this.disabledartdesabschlusses = true;
+          this.disabledversetztnachklasse = true;
+        }
+      }
+
+      _selectedradioabschlussberuflichChanged() {
+        if (this.selectedradioabschlussberuflich.localeCompare('yes') == 0) {
+          this.disabledartdesabschlussesberuflich = false;
+        } else {
+          this.disabledartdesabschlussesberuflich = true;
+          this.selectedartdesabschlussesberuflich = undefined;
+        }
+      }
+
+    }
+    window.customElements.define(MyView1.is, MyView1);
+  </script>
+</dom-module>
