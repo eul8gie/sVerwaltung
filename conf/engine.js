@@ -40,9 +40,9 @@ module.exports = function(app) {
     
     return exphbs({
         extname: '.hbs',
-        defaultLayout: 'main',
-        partialsDir: __dirname + "/../views/_components",
-        layoutsDir: __dirname + "/../views/_layouts",
+        defaultLayout: 'layout',
+        partialsDir: __dirname + "/../views",
+        layoutsDir: __dirname + "/../views",
         helpers: helpers
     });
 };
