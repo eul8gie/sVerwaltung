@@ -1,0 +1,18 @@
+Frontend
+* GET von einzelnen Schulerdaten für spezielles Interface für einzelnen Schueler per /revise/[id]
+* POST der Daten aus Formular an /api/class/[token]
+* Interface für Admin
+** GET  aller Daten von Schuelern zu bestimmter Klasse von ./api/class/[token]
+** SET von bestimmten Parametern zu bestimmtem Schueler per /api/pupil/[id]
+** EMIT zum Auffordern zur Nachbearbeitung ?
+
+Backend
+* WebSockets zur Aufforderung zur Nachbearbeitung der Daten
+* Generierung der Token 
+* Routing
+
+Datenbank
+* CREATE    Schuelerdokument
+* READ      alle Schuelerdaten zu bestimmter Klasse
+* UPDATE    Schuelerdokument
+* DELETE    unerwünschte Daten
