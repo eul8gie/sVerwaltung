@@ -1,4 +1,5 @@
 const Schema = require('mongoose').Schema;
+
 const address =  {
     street: String,
     number: Number,
@@ -6,11 +7,13 @@ const address =  {
     city: String,
     area: String
 };
+
 module.exports = new Schema({
+    class: String,
     firstname: String,
     lastname: String,
     sex: String,
-    birth: Date,
+    birth_date: Date,
     birth_place: String,
     citizenship: String,
     religion: String,
@@ -51,7 +54,11 @@ module.exports = new Schema({
         end: Date,
         grad: Boolean,
         grad_type: String
+    },
+    cconfirmed: {
+        type: Boolean,
+        default: false
     }
-    
-    
+}, {
+    strict: true
 });

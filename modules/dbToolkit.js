@@ -1,4 +1,5 @@
-const mongo = require("./db/mongo");
+const mongo = require("./db/mongo"),
+      Collections = mongo.Collections;
 
 module.exports.Collections =  {
     user: {
@@ -12,4 +13,9 @@ module.exports.Collections =  {
             };
         }
     }
+};
+/* jshint ignore: start */
+let addSchueler = async (schuelerData) => {
+    return await Collections.schueler.create(schuelerData);
+    
 };
