@@ -40,7 +40,7 @@ module.exports = new Schema({
         email: String
     },
     common_school: {
-        type: String,
+        school_type: String,
         year: Number,
         class: Number,
         grad: Boolean,
@@ -48,14 +48,14 @@ module.exports = new Schema({
         grad_class: Number
     },
     business_school: {
-        type: String,
+        school_type: String,
         name: String,
         start: Date,
         end: Date,
         grad: Boolean,
         grad_type: String
     },
-    cconfirmed: {
+    confirmed: {
         type: Boolean,
         default: false
     }
